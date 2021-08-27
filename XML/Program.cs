@@ -1,10 +1,11 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using Xml;
 using static System.Console;
 
 namespace XML
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -14,18 +15,16 @@ namespace XML
 
             var document = xmlHelper.GetFile(filename);
 
-            WriteLine("Task 1. Display login: ");
             var logins = xmlHelper.GetLogins(document).ToList();
             foreach (var login in logins)
             {
-                Write(login);
+                File.WriteAllText("readingInfo.txt", login.ToString());
             }
 
-            WriteLine("Task 3. Display incorrect logins: ");
             var correctLogins = xmlHelper.GetInCorrectLogins(logins);
             foreach (var correctLogin in correctLogins)
             {
-                WriteLine(correctLogin);
+                File.WriteAllText("incorrectLogins.txt", correctLogin.ToString());
             }
 
             ReadLine();
