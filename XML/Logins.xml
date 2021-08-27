@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <login name="Bob">
+    <window title="main">
+      <top>10</top>
+      <left>20</left>
+      <width>400</width>
+      <height>200</height>
+    </window>
+    <window title="help">
+      <top>20</top>
+      <left>30</left>
+      <width>0</width>
+      <height>100</height>
+    </window>
+  </login>
+  <login name="Tom">
+    <window title="secondary">
+      <top>20</top>
+      <left>30</left>
+      <width>500</width>
+      <height>600</height>
+    </window>
+  </login>
+</config>
