@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using Xml;
 using static System.Console;
@@ -16,18 +17,27 @@ namespace XML
             var document = xmlHelper.GetFile(filename);
 
             var logins = xmlHelper.GetLogins(document).ToList();
-            foreach (var login in logins)
+            using (StreamWriter writetext = new StreamWriter("write.txt")) 
             {
-                File.WriteAllText("readingInfo.txt", login.ToString());
+                foreach (var loginReading in logins)
+                {
+                    writetext.WriteLine(loginReading);
+                }
             }
 
             var correctLogins = xmlHelper.GetInCorrectLogins(logins);
-            foreach (var correctLogin in correctLogins)
+            using (StreamWriter writetext = new StreamWriter("write.txt"))
             {
-                File.WriteAllText("incorrectLogins.txt", correctLogin.ToString());
+                foreach (var incorrectLogin in correctLogins)
+                {
+                    writetext.WriteLine(incorrectLogin);
+                }
             }
 
-            ReadLine();
+
+            JsonReading jsonReading = new JsonReading();
+
+            jsonReading.MigrateToJson(logins);
         }
     }
 }

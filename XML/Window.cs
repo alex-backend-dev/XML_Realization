@@ -28,5 +28,31 @@
         {
             return $"{Title}({Top},{Left},{Width},{Height})";
         }
+
+        /// <summary>
+        /// Initianilize properties when they are nullable
+        /// </summary>
+        public void SetProperties()
+        {
+            if (Top == null)
+            {
+                Top = 0;
+            }
+
+            if (Left == null)
+            {
+                Left = 0;
+            }
+
+            if (Width == null)
+            {
+                Width = 400;
+            }
+
+            if (Height == null)
+            {
+                Height = 150;
+            }
+        }
     }
 }
