@@ -24,18 +24,14 @@ namespace XML
         }
 
         /// <summary>
-        /// 
+        /// Check logins
         /// </summary>
-        /// <returns></returns>
+        /// <returns> Correct windows </returns>
         public bool IsCorrect()
         {
             return Windows.Any(x => x.IsCorrectWindow()); // если хотя бы одно окно не корректно, то true, если все корректны, то false;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         public override string ToString()
         {
             var outputString = new StringBuilder();
