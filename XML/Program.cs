@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using Xml;
-using static System.Console;
 
 namespace XML
 {
