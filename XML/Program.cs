@@ -24,7 +24,7 @@ namespace XML
             }
 
             var correctLogins = xmlHelper.GetInCorrectLogins(logins);
-            using (StreamWriter writetext = new StreamWriter("write.txt"))
+            using (StreamWriter writetext = new StreamWriter("Incorrect.txt"))
             {
                 foreach (var incorrectLogin in correctLogins)
                 {

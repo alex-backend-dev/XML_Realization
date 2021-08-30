@@ -29,7 +29,7 @@ namespace XML
         /// <returns> Correct windows </returns>
         public bool IsCorrect()
         {
-            return Windows.Any(x => x.IsCorrectWindow()); // если хотя бы одно окно не корректно, то true, если все корректны, то false;
+            return Windows.Any(x => x.IsCorrectWindow()); 
         }
 
         public override string ToString()

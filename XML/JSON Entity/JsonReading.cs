@@ -18,7 +18,7 @@ namespace XML
             foreach(var elementLogin in logins)
             {
                 elementLogin.Windows.ForEach(window => window.SetProperties());
-                string path = @$"C:\Users\sanch\Desktop\Clone XML\XML_Realization\XML\bin\Debug\net5.0\Config\{elementLogin.Name}";
+                string path = @$"Config\{elementLogin.Name}";
 
                 Directory.CreateDirectory(path);
 
