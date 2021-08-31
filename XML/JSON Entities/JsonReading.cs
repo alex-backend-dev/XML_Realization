@@ -17,13 +17,13 @@ namespace XML
         {
             foreach(var elementLogin in logins)
             {
-                elementLogin.Windows.ForEach(window => window.SetProperties());
-                string path = @$"Config\{elementLogin.Name}";
+                var result = JsonPropertySetter.CorrectWindows(elementLogin);
+                string path = @$"Config\{result.Name}";
 
                 Directory.CreateDirectory(path);
 
-                var json = JsonConvert.SerializeObject(elementLogin);
-                File.WriteAllText(@$"{path}\{elementLogin.Name}.json", json);
+                var json = JsonConvert.SerializeObject(result);
+                File.WriteAllText(@$"{path}\{result.Name}.json", json);
             }
         }
     }

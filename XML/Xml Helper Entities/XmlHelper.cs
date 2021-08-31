@@ -5,14 +5,14 @@ using XML;
 
 namespace Xml
 {
-    public class XmlHelper
+    public static class XmlHelper
     {
         /// <summary>
         /// Load Xml file
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns> New Xdocument from a file </returns>
-        public XDocument GetFile(string filePath)
+        public static XDocument GetFile(string filePath)
         {
             return XDocument.Load(filePath);
         }
@@ -22,7 +22,7 @@ namespace Xml
         /// </summary>
         /// <param name="document"></param>
         /// <returns> The data list in formatted form</returns>
-        public IEnumerable<Login> GetLogins(XDocument document)
+        public static IEnumerable<Login> GetLogins(XDocument document)
         {
             return document
                 .Descendants("login")
@@ -45,7 +45,7 @@ namespace Xml
         /// </summary>
         /// <param name="logins"></param>
         /// <returns> Correct logins </returns>
-        public IEnumerable<string> GetInCorrectLogins(IEnumerable<Login> logins)
+        public static IEnumerable<string> GetInCorrectLogins(IEnumerable<Login> logins)
         {
             return logins
                 .Where(x => !x.IsCorrect()) // выбираем только те элементы, которые корректны

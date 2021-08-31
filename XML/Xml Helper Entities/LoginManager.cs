@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Xml;
@@ -10,22 +11,25 @@ namespace XML
     /// </summary>
     public class LoginManager
     {
-        private string filename;
+        private List<Login> logins;
 
-        public LoginManager(string filename)
+        public LoginManager(string fileName)
         {
-            this.filename = filename;
+            if (string.IsNullOrEmpty(fileName))
+            {
+                throw new ArgumentNullException("Ошибка! Не может быть пустым название!");
+            }
+            
+            var document = XmlHelper.GetFile(fileName);
+            logins = XmlHelper.GetLogins(document).ToList();
         }
 
         /// <summary>
         /// Writing convert Xml in right format into file
         /// </summary>
         /// <param name="xmlHelper"></param>
-        public void CorrectLogin(XmlHelper xmlHelper)
+        public void CorrectLogin()
         {
-            var document = xmlHelper.GetFile(filename);
-
-            var logins = xmlHelper.GetLogins(document).ToList();
             using (StreamWriter writetext = new StreamWriter("write.txt"))
             {
                 foreach (var loginReading in logins)
@@ -40,9 +44,9 @@ namespace XML
         /// </summary>
         /// <param name="logins"></param>
         /// <param name="xmlHelper"></param>
-        public void InCorrectLogin(IEnumerable<Login> logins, XmlHelper xmlHelper)
+        public void IncorrectLogin()
         {
-            var correctLogins = xmlHelper.GetInCorrectLogins(logins);
+            var correctLogins = XmlHelper.GetInCorrectLogins(logins);
             using (StreamWriter writetext = new StreamWriter("Incorrect.txt"))
             {
                 foreach (var incorrectLogin in correctLogins)
